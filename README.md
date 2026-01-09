@@ -1,43 +1,81 @@
-# iddas-verification-hardhat
-Hardhat-based local development, testing, and deployment environment for the IDDAS verification layer smart contracts.
+# IDDAS Hardhat Project
 
-# IDDAS Verification Layer - Hardhat Environment
-
-This repository contains the Hardhat-based development, testing, and deployment setup for the IDDAS Verification Layer.
-
-It is used to:
-- Develop and test smart contracts locally using a Hardhat EVM node
-- Validate verification logic prior to any public deployment
-- Manage deployment scripts for testnets and mainnet when applicable
+A Hardhat-based Ethereum project for deploying and testing smart contracts on a local development blockchain.
 
 ---
 
-## Scope
+## Table of Contents
 
-This repository is limited to **implementation tooling and contract code** related to the verification layer.
-
-It does **not** define:
-- The IDDAS protocol specification
-- Economic rules or governance
-- Product UI or platform logic
-
-Those are defined separately in protocol and application repositories.
+- [Prerequisites](#prerequisites)  
+- [Installation](#installation)  
+- [Compile Contracts](#compile-contracts)  
+- [Run Local Ethereum Node](#run-local-ethereum-node)  
+- [Deploy Contracts](#deploy-contracts)  
+- [Usage](#usage)  
 
 ---
 
-## Status
+## Prerequisites
 
-Active development.  
-Local testing via Hardhat is currently used in place of public testnets.
+- Node.js (v18+ recommended)  
+- npm (comes with Node.js)  
+- Git (optional, for cloning the repo)
 
 ---
 
-## Developer Notes (Hardhat Setup)
+## Installation
 
-> This section may be extended by the verification layer developer to document:
-> - Hardhat installation and configuration
-> - Local node usage
-> - Testing workflows
-> - Deployment scripts and environment variables
+Clone the repository (if not already cloned):
 
-Implementation details should not modify the scope or purpose defined above.
+```bash
+git clone <repository-url>
+cd iddas-hardhat
+```
+
+Install project dependencies:
+
+```bash
+npm install
+```
+
+## Compile Contracts
+
+Compile all Solidity contracts using Hardhat:
+
+```bash
+npx hardhat compile
+```
+
+Compiled artifacts will be available in the artifacts/ folder.
+
+## Run Local Ethereum Node
+
+Start a local EVM for development and testing:
+
+```bash
+npx hardhat node
+```
+
+This spins up a local blockchain with pre-funded accounts.
+
+Account 0 is the default deployer account.
+
+Keep this terminal running while deploying and testing contracts.
+
+## Deploy Contracts
+
+Deploy contracts to the local Hardhat node:
+
+```bash
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+Uses Account 0 by default as the deployer.
+
+Deployed contract addresses and transaction logs will appear in the console.
+
+## Usage
+
+Interact with contracts using Hardhat console or scripts:
+
+npx hardhat console --network localhost
