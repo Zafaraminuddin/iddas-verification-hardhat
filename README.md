@@ -69,10 +69,30 @@ Deploy contracts to the local Hardhat node:
 ```bash
 npx hardhat run scripts/deploy.js --network localhost
 ```
-
 Uses Account 0 by default as the deployer.
 
+To deploy on a live network change the network parameter in above command and add the configurations for the specific network in the hardhat.config.js file.
+Few networks configuration details are already added 2 testnets( sepolia, polygon-amoy) and 1 mainnet polygon. commands for each network:
+```bash
+npx hardhat run scripts/deploy.js --network sepolia
+```
+```bash
+npx hardhat run scripts/deploy.js --network polygon_amoy
+```
+```bash
+npx hardhat run scripts/deploy.js --network polygon_main
+```
+
 Deployed contract addresses and transaction logs will appear in the console.
+
+## Scripts
+
+To transfer ownership of the contract use the following command:
+```bash
+npx hardhat run scripts/transfer.js --network polygon_main
+```
+transfer.js file have 2 hardcoded variables ``` CONTRACT_ADDRESS ``` and ``` NEW_OWNER```, update these before running the command.
+Make sure the network name specified is correct according to your use, the network name must match with what declared in the hardhat.config.js file.
 
 ## Usage
 
